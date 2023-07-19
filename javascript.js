@@ -9,3 +9,8 @@ return randomItem;
 }
 
 // console.log(getComputerChoice());
+
+
+// create a function playRound that takes two parameters: playerSelection and computerSelection
+// Make playerSelection parameter case-insensitive
+// create an if..else if..else condition for each paired selection and return a string
