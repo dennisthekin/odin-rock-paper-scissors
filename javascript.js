@@ -12,5 +12,14 @@ return randomItem;
 
 
 // create a function playRound that takes two parameters: playerSelection and computerSelection
+function playRound(playerSelection, computerSelection) {
+
 // Make playerSelection parameter case-insensitive
+    let firstLetter = playerSelection.charAt(0).toUpperCase();
+    let otherLetters = playerSelection.slice(1).toLowerCase();
+    playerSelection = firstLetter + otherLetters;
+
 // create an if..else if..else condition for each paired selection and return a string
+    
+
+}
