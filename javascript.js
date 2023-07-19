@@ -20,6 +20,15 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = firstLetter + otherLetters;
 
 // create an if..else if..else condition for each paired selection and return a string
-    
-
+    if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (playerSelection === computerSelection) {
+        return `It's a draw. ${playerSelection} can't beat ${computerSelection} `;
+    } else {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }
 }
