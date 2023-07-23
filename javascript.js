@@ -8,9 +8,6 @@ const randomItem = items[Math.floor(Math.random() * items.length)];
 return randomItem;
 }
 
-// console.log(getComputerChoice());
-
-
 // create a function playRound that takes two parameters: playerSelection and computerSelection
 function playRound(playerSelection, computerSelection) {
 
@@ -19,16 +16,43 @@ function playRound(playerSelection, computerSelection) {
     let otherLetters = playerSelection.slice(1).toLowerCase();
     playerSelection = firstLetter + otherLetters;
 
-// create an if..else if..else condition for each paired selection and return a string
-    if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    // create an if..else if..else condition for each paired selection and return a string
+
+    if (playerSelection === computerSelection) {
+        return "It's a draw.";
     } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+        return 'You Win!';
     } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
-    } else if (playerSelection === computerSelection) {
-        return `It's a draw. ${playerSelection} can't beat ${computerSelection} `;
+        return 'You Win!';
+    } else if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
+        return 'You Win!';
     } else {
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        return 'You Lose!';
     }
 }
+
+
+// create function game()
+function game() {
+    // create variable round to keep track of each round
+    let round = 0;
+
+    // use a while loop to loop through the playRound() function 5 times
+    while(round < 5) {
+      // create variable playerSelection to store user choice after prompt
+      let playerSelection = prompt('What is your item choice?');
+      // create variable computerSelection to store computer selection from getComputerChoice() function
+      let computerSelection = getComputerChoice();
+      // create variable roundResult to store results from the playRound() function call for each round
+      let roundResult = playRound(playerSelection, computerSelection);
+
+      // print result of each round
+      console.log(roundResult);
+      
+      // increment round until condition is no longer true
+      round++;  
+    }
+    
+  }
+
+  console.log(game());
