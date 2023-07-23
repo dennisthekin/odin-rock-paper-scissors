@@ -1,3 +1,8 @@
+// create variables to store scores for each game round
+let playerScore = 0;
+let computerScore = 0;
+let draws= 0;
+
 // create a function getComputerChoice
 function getComputerChoice() {
 // create an items variable to store an array that contains 3 choices (Rock, Paper, Scissors)
@@ -48,11 +53,35 @@ function game() {
 
       // print result of each round
       console.log(roundResult);
+
+      // call gameScore() function with roundResult as argument
+      gameScore(roundResult);
+      
+      // print results for each round
+      console.log(`Player Score: ${playerScore}`);
+      console.log(`Computer Score: ${computerScore}`);
       
       // increment round until condition is no longer true
       round++;  
     }
     
   }
+ 
 
-  console.log(game());
+// create gameScore() function with one parameter to keep track of player's score
+function gameScore(roundResult) {
+
+    // use conditional if...else to add up each player's score
+      if (roundResult === 'You Win!') {
+        playerScore++;
+      } else if (roundResult === "It's a draw.") {
+        draws++;
+      } else {
+        computerScore++;
+      }
+      
+    }
+
+
+// print results to console
+console.log(game());
