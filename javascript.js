@@ -1,7 +1,7 @@
 // create variables to store scores for each game round
 let playerScore = 0;
 let computerScore = 0;
-let draws= 0;
+let draws = 0;
 
 // create a function getComputerChoice
 function getComputerChoice() {
@@ -64,9 +64,12 @@ function game() {
       // increment round until condition is no longer true
       round++;  
     }
+
+    // return winner after five rounds
+    return gameWinner();
     
   }
- 
+
 
 // create gameScore() function with one parameter to keep track of player's score
 function gameScore(roundResult) {
@@ -82,6 +85,17 @@ function gameScore(roundResult) {
       
     }
 
+// create function gameWinner() to announce winner after 5 rounds
+function gameWinner() {
+    // use conditional if...else to find the winner
+        if (playerScore === computerScore){
+          console.log('The game was a draw');
+      } else if (playerScore > computerScore) {
+           console.log("You're the overall winner!")
+      } else {
+          console.log('The computer wins!');
+      }
+    }
 
 // print results to console
 console.log(game());
