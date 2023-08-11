@@ -23,17 +23,19 @@ function playRound(playerSelection, computerSelection) {
 
   // create an if..else if..else condition for each paired selection and return a string
 
-  if (playerSelection === computerSelection) {
-    return "It's a draw.";
-  } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-    return 'You Win!';
-  } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-    return 'You Win!';
-  } else if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
-    return 'You Win!';
-  } else {
-    return 'You Lose!';
-  }
+  // if (playerSelection === computerSelection) {
+  //   return "It's a draw.";
+  // } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+  //   return 'You Win!';
+  // } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+  //   return 'You Win!';
+  // } else if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
+  //   return 'You Win!';
+  // } else {
+  //   return 'You Lose!';
+  // }
+
+  console.log(playerSelection, computerSelection);
 
 }
 
@@ -62,3 +64,32 @@ function gameWinner() {
     console.log('The computer wins!');
   }
 }
+
+// Add an event listener to the buttons that
+// call `playRound` function with the correct
+// 'playerSelection' every time a button is clicked
+
+
+// select each button
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+// add an event listener to each button
+rock.addEventListener('click', () => {
+  const playerSelection = 'rock';
+  const computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+});
+
+paper.addEventListener('click', () => {
+  const playerSelection = 'paper';
+  const computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+});
+
+scissors.addEventListener('click', () => {
+  const playerSelection = 'scissors';
+  const computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+});
