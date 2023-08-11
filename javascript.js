@@ -37,10 +37,12 @@ function playRound(playerSelection, computerSelection) {
     roundResult = 'You Lose!';
   }
 
-  console.log(playerSelection, computerSelection);
-  console.log(roundResult);
+  // console.log(playerSelection, computerSelection);
+  // console.log(roundResult);
 
   gameScore(roundResult);
+
+  gameWinner();
 }
 
 // create gameScore() function with one parameter to keep track of player's score
@@ -52,7 +54,7 @@ function gameScore(roundResult) {
     player.textContent = `Player: ${playerScore}`;
   } else if (roundResult === "It's a draw.") {
     draws++;
-    draw.textContent = `draw: ${draws}`;
+    draw.textContent = `Draw: ${draws}`;
   } else {
     computerScore++;
     computer.textContent = `Computer: ${computerScore}`;
@@ -60,15 +62,15 @@ function gameScore(roundResult) {
 
 }
 
-// create function gameWinner() to announce winner after 5 rounds
+const maxPoints = 5;
+
+// create function gameWinner() to announce winner once one player reaches  5 points
 function gameWinner() {
   // use conditional if...else to find the winner
-  if (playerScore === computerScore) {
-    console.log('The game was a draw');
-  } else if (playerScore > computerScore) {
-    console.log("You're the overall winner!")
-  } else {
-    console.log('The computer wins!');
+  if (playerScore === maxPoints) {
+    winner.textContent = 'Winner: You Won';
+  } else if (computerScore === maxPoints){
+    winner.textContent = 'Winner: Computer Won!';
   }
 }
 
