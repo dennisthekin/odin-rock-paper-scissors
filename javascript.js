@@ -34,42 +34,8 @@ function playRound(playerSelection, computerSelection) {
   } else {
     return 'You Lose!';
   }
-}
-
-
-// create function game()
-function game() {
-  // create variable round to keep track of each round
-  let round = 0;
-
-  // use a while loop to loop through the playRound() function 5 times
-  while (round < 5) {
-    // create variable playerSelection to store user choice after prompt
-    let playerSelection = prompt('What is your item choice?');
-    // create variable computerSelection to store computer selection from getComputerChoice() function
-    let computerSelection = getComputerChoice();
-    // create variable roundResult to store results from the playRound() function call for each round
-    let roundResult = playRound(playerSelection, computerSelection);
-
-    // print result of each round
-    console.log(roundResult);
-
-    // call gameScore() function with roundResult as argument
-    gameScore(roundResult);
-
-    // print results for each round
-    console.log(`Player Score: ${playerScore}`);
-    console.log(`Computer Score: ${computerScore}`);
-
-    // increment round until condition is no longer true
-    round++;
-  }
-
-  // return winner after five rounds
-  return gameWinner();
 
 }
-
 
 // create gameScore() function with one parameter to keep track of player's score
 function gameScore(roundResult) {
@@ -96,6 +62,3 @@ function gameWinner() {
     console.log('The computer wins!');
   }
 }
-
-// print results to console
-console.log(game());
