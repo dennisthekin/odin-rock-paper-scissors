@@ -1,19 +1,19 @@
-// create variables to store scores for each game round
+// variables to store scores for each game round
 let playerScore = 0;
 let computerScore = 0;
 let draws = 0;
 
-// create a function getComputerChoice
+
 function getComputerChoice() {
-  // create an items variable to store an array that contains 3 choices (Rock, Paper, Scissors)
+  // items variable to store an array that contains 3 choices (Rock, Paper, Scissors)
   const items = ['Rock', 'Paper', 'Scissors'];
-  // create an randomItem variable to get and store a random choice from items array
+  // randomItem variable to get and store a random choice from items array
   const randomItem = items[Math.floor(Math.random() * items.length)];
-  // return randomItem
+  
   return randomItem;
 }
 
-// create a function playRound that takes two parameters: playerSelection and computerSelection
+// function playRound that takes two parameters: playerSelection and computerSelection
 function playRound(playerSelection, computerSelection) {
 
   // Make playerSelection parameter case-insensitive
@@ -21,9 +21,9 @@ function playRound(playerSelection, computerSelection) {
   let otherLetters = playerSelection.slice(1).toLowerCase();
   playerSelection = firstLetter + otherLetters;
 
-
+  // variable to store outcome of each round
   let roundResult;
-  // create an if..else if..else condition for each paired selection and return a string
+  // check each paired selection and store round outcome in the roundResult variable
 
   if (playerSelection === computerSelection) {
     roundResult = "It's a draw.";
@@ -40,9 +40,11 @@ function playRound(playerSelection, computerSelection) {
   gameScore(roundResult);
 
   gameWinner();
+
+  removeClickListener();
 }
 
-// create gameScore() function with one parameter to keep track of player's score
+// function with one parameter to keep track of player's score
 function gameScore(roundResult) {
 
   // use conditional if...else to add up each player's score
@@ -61,7 +63,7 @@ function gameScore(roundResult) {
 
 const maxPoints = 5;
 
-// create function gameWinner() to announce winner once one player reaches  5 points
+// function to announce winner once one player reaches 5 points
 function gameWinner() {
   // use conditional if...else to find the winner
   if (playerScore === maxPoints) {
@@ -79,14 +81,25 @@ buttons.forEach(button => {
   button.addEventListener('click', clickListener);
 });
 
+// variables to store html id selectors
 const player = document.querySelector('#player-score');
 const computer = document.querySelector('#computer-score');
 const draw = document.querySelector('#draw');
 const winner = document.querySelector('#winner');
 
-
+// function that gets and assigns values to the variables and calls
+// playRound with the relevant values
 function clickListener(event) {
   const playerSelection = event.target.id;
   const computerSelection = getComputerChoice();
   playRound(playerSelection, computerSelection);
+}
+
+// function to stop listening for a click once a player reaches 5 points
+function removeClickListener() {
+  if (playerScore === maxPoints || computerScore === maxPoints) {
+    buttons.forEach(function (button) {
+      button.removeEventListener('click', clickListener);
+    }) 
+  }
 }
