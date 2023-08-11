@@ -6,20 +6,15 @@ let draws = 0;
 
 function getComputerChoice() {
   // items variable to store an array that contains 3 choices (Rock, Paper, Scissors)
-  const items = ['Rock', 'Paper', 'Scissors'];
+  const items = ['rock', 'paper', 'scissors'];
   // randomItem variable to get and store a random choice from items array
   const randomItem = items[Math.floor(Math.random() * items.length)];
-  
+
   return randomItem;
 }
 
 // function playRound that takes two parameters: playerSelection and computerSelection
 function playRound(playerSelection, computerSelection) {
-
-  // Make playerSelection parameter case-insensitive
-  let firstLetter = playerSelection.charAt(0).toUpperCase();
-  let otherLetters = playerSelection.slice(1).toLowerCase();
-  playerSelection = firstLetter + otherLetters;
 
   // variable to store outcome of each round
   let roundResult;
@@ -27,11 +22,11 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === computerSelection) {
     roundResult = "It's a draw.";
-  } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+  } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
     roundResult = 'You Win!';
-  } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+  } else if (playerSelection === 'paper' && computerSelection === 'rock') {
     roundResult = 'You Win!';
-  } else if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
+  } else if (playerSelection === 'rock' && computerSelection == 'scissors') {
     roundResult = 'You Win!';
   } else {
     roundResult = 'You Lose!';
@@ -100,6 +95,6 @@ function removeClickListener() {
   if (playerScore === maxPoints || computerScore === maxPoints) {
     buttons.forEach(function (button) {
       button.removeEventListener('click', clickListener);
-    }) 
+    })
   }
 }
