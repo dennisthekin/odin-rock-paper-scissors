@@ -31,6 +31,8 @@ function playRound(playerSelection, computerSelection) {
   } else {
     roundResult = 'You Lose!';
   }
+  
+  showPlayerChoices(playerSelection, computerSelection);
 
   gameScore(roundResult);
 
@@ -82,6 +84,8 @@ const computer = document.querySelector('#computer-score');
 const draw = document.querySelector('#draw');
 const winner = document.querySelector('#winner');
 
+const outcome = document.querySelector('#outcome');
+
 // function that gets and assigns values to the variables and calls
 // playRound with the relevant values
 function clickListener(event) {
@@ -97,4 +101,9 @@ function removeClickListener() {
       button.removeEventListener('click', clickListener);
     })
   }
+}
+
+// function to show what each player's selection
+function showPlayerChoices(playerSelection, computerSelection) {
+  outcome.textContent = `Player threw ${playerSelection}, Computer threw ${computerSelection}`;
 }

@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     display: flex;
     justify-content: space-between;
     width: 350px;
@@ -47,4 +47,8 @@ button:hover {
     width: 400px;
     display: flex;
     justify-content: space-between;
+}
+
+p {
+    margin-top: 20px;
 }
