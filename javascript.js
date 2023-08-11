@@ -21,22 +21,26 @@ function playRound(playerSelection, computerSelection) {
   let otherLetters = playerSelection.slice(1).toLowerCase();
   playerSelection = firstLetter + otherLetters;
 
+
+  let roundResult;
   // create an if..else if..else condition for each paired selection and return a string
 
-  // if (playerSelection === computerSelection) {
-  //   return "It's a draw.";
-  // } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
-  //   return 'You Win!';
-  // } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
-  //   return 'You Win!';
-  // } else if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
-  //   return 'You Win!';
-  // } else {
-  //   return 'You Lose!';
-  // }
+  if (playerSelection === computerSelection) {
+    roundResult =  "It's a draw.";
+  } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
+    roundResult = 'You Win!';
+  } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
+    roundResult = 'You Win!';
+  } else if (playerSelection === 'Rock' && computerSelection == 'Scissors') {
+    roundResult = 'You Win!';
+  } else {
+    roundResult = 'You Lose!';
+  }
 
   console.log(playerSelection, computerSelection);
+  console.log(roundResult);
 
+  gameScore(roundResult);
 }
 
 // create gameScore() function with one parameter to keep track of player's score
@@ -45,10 +49,13 @@ function gameScore(roundResult) {
   // use conditional if...else to add up each player's score
   if (roundResult === 'You Win!') {
     playerScore++;
+    player.textContent = `Player: ${playerScore}`;
   } else if (roundResult === "It's a draw.") {
     draws++;
+    draw.textContent = `draw: ${draws}`;
   } else {
     computerScore++;
+    computer.textContent = `Computer: ${computerScore}`;
   }
 
 }
@@ -93,3 +100,9 @@ scissors.addEventListener('click', () => {
   const computerSelection = getComputerChoice();
   playRound(playerSelection, computerSelection);
 });
+
+
+const player = document.querySelector('#player-score');
+const computer = document.querySelector('#computer-score');
+const draw = document.querySelector('#draw');
+const winner = document.querySelector('#winner');
