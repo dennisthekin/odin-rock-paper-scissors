@@ -37,9 +37,6 @@ function playRound(playerSelection, computerSelection) {
     roundResult = 'You Lose!';
   }
 
-  // console.log(playerSelection, computerSelection);
-  // console.log(roundResult);
-
   gameScore(roundResult);
 
   gameWinner();
@@ -74,45 +71,17 @@ function gameWinner() {
   }
 }
 
-// Add an event listener to the buttons that
-// call `playRound` function with the correct
-// 'playerSelection' every time a button is clicked
-
-
-// select each button
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
-
 // add an event listener to each button
 
-// global event property is deprecated
-// Outside the context of the an event handler, the value is always undefined
-// if no event is currently being handled
+const buttons = document.querySelectorAll('button');
 
-// The Event object passed directly to event handlers should be used instead whenever possible.
-
-// When you don't specify the 'event' parameter and try to access 'event', you implicitly access the 'event' property on the window object which has been deprecated.
-
-// specify parameter 'event' in the event handler function, then access it 
-rock.addEventListener('click', (event) => {
-  const playerSelection = event.target.id;
-  const computerSelection = getComputerChoice();
-  playRound(playerSelection, computerSelection);
+buttons.forEach(button => {
+  button.addEventListener('click', (event) => {
+    const playerSelection = event.target.id;
+    const computerSelection = getComputerChoice();
+    playRound(playerSelection, computerSelection);
+  });
 });
-
-paper.addEventListener('click', (event) => {
-  const playerSelection = event.target.id;
-  const computerSelection = getComputerChoice();
-  playRound(playerSelection, computerSelection);
-});
-
-scissors.addEventListener('click', (event) => {
-  const playerSelection = event.target.id;
-  const computerSelection = getComputerChoice();
-  playRound(playerSelection, computerSelection);
-});
-
 
 const player = document.querySelector('#player-score');
 const computer = document.querySelector('#computer-score');
