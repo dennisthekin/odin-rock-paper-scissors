@@ -65,7 +65,7 @@ const maxPoints = 5;
 function gameWinner() {
   // use conditional if...else to find the winner
   if (playerScore === maxPoints) {
-    winner.textContent = 'Winner: You Won';
+    winner.textContent = 'Winner: You Won!';
   } else if (computerScore === maxPoints) {
     winner.textContent = 'Winner: Computer Won!';
   }
@@ -76,11 +76,7 @@ function gameWinner() {
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach(button => {
-  button.addEventListener('click', (event) => {
-    const playerSelection = event.target.id;
-    const computerSelection = getComputerChoice();
-    playRound(playerSelection, computerSelection);
-  });
+  button.addEventListener('click', clickListener);
 });
 
 const player = document.querySelector('#player-score');
@@ -88,3 +84,9 @@ const computer = document.querySelector('#computer-score');
 const draw = document.querySelector('#draw');
 const winner = document.querySelector('#winner');
 
+
+function clickListener(event) {
+  const playerSelection = event.target.id;
+  const computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+}
