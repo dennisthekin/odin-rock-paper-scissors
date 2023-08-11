@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
   // create an if..else if..else condition for each paired selection and return a string
 
   if (playerSelection === computerSelection) {
-    roundResult =  "It's a draw.";
+    roundResult = "It's a draw.";
   } else if (playerSelection === 'Scissors' && computerSelection === 'Paper') {
     roundResult = 'You Win!';
   } else if (playerSelection === 'Paper' && computerSelection === 'Rock') {
@@ -69,7 +69,7 @@ function gameWinner() {
   // use conditional if...else to find the winner
   if (playerScore === maxPoints) {
     winner.textContent = 'Winner: You Won';
-  } else if (computerScore === maxPoints){
+  } else if (computerScore === maxPoints) {
     winner.textContent = 'Winner: Computer Won!';
   }
 }
@@ -85,20 +85,30 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
 // add an event listener to each button
-rock.addEventListener('click', () => {
-  const playerSelection = 'rock';
+
+// global event property is deprecated
+// Outside the context of the an event handler, the value is always undefined
+// if no event is currently being handled
+
+// The Event object passed directly to event handlers should be used instead whenever possible.
+
+// When you don't specify the 'event' parameter and try to access 'event', you implicitly access the 'event' property on the window object which has been deprecated.
+
+// specify parameter 'event' in the event handler function, then access it 
+rock.addEventListener('click', (event) => {
+  const playerSelection = event.target.id;
   const computerSelection = getComputerChoice();
   playRound(playerSelection, computerSelection);
 });
 
-paper.addEventListener('click', () => {
-  const playerSelection = 'paper';
+paper.addEventListener('click', (event) => {
+  const playerSelection = event.target.id;
   const computerSelection = getComputerChoice();
   playRound(playerSelection, computerSelection);
 });
 
-scissors.addEventListener('click', () => {
-  const playerSelection = 'scissors';
+scissors.addEventListener('click', (event) => {
+  const playerSelection = event.target.id;
   const computerSelection = getComputerChoice();
   playRound(playerSelection, computerSelection);
 });
@@ -108,3 +118,4 @@ const player = document.querySelector('#player-score');
 const computer = document.querySelector('#computer-score');
 const draw = document.querySelector('#draw');
 const winner = document.querySelector('#winner');
+
