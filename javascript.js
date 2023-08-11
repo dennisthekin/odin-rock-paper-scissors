@@ -62,9 +62,9 @@ const maxPoints = 5;
 function gameWinner() {
   // use conditional if...else to find the winner
   if (playerScore === maxPoints) {
-    winner.textContent = 'Winner: You Won!';
+    winner.textContent = 'Winner: Player!';
   } else if (computerScore === maxPoints) {
-    winner.textContent = 'Winner: Computer Won!';
+    winner.textContent = 'Winner: Computer!';
   }
 }
 
